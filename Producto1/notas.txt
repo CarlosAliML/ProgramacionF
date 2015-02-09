@@ -1,0 +1,144 @@
+El siguiente texto es una pequeña guia para la terminal de Linux, así como algunos comandos básicos para usarlo y entender mejor la utilidad de este sistema operativo.
+
+A continucación le mostraremos una lista de comandos y su función.
+
+
+
+Man
+Este es un comando demasiado útil cuando estas aprendiendo lo básico para linux, "man" te muestra un "manual" y la función del comando que escribas después de este. Ejemplo:
+
+$ Man ls    ~Te describe para qué sirve el comando ls.
+
+
+
+ 
+Cat
+Nos permite visualizar el contenido de un archivo de texto sin la necesidad de un editor, debemos mencionarlo junto al archivo que deseamos visualizar. Ejemplo:
+
+$ cat prueba.txt
+
+
+
+
+Ls
+Permite listar el contenido de un directorio o fichero. Puedes usar -a para mostrar los archivos ocultos y -l para mostrar los usuarios, permisos y la fecha de los archivos. Para combinarlos se escribe simplemente: -la. Ejemplo:
+
+$ ls -la /home/directorio
+
+
+
+
+Cd
+Viene de "cambiar directorio" Te permite acceder a una ruta distinta de la que te encuentras. Por ejemplo, si estas en el directorio /home y deseas acceder a /home/ejercicios, seria:
+
+$ cd /home/ejercicios
+
+Si estás en /home/ejercicios y deseas subir un nivel (es decir ir al directorio /home), ejecutas:
+
+$ cd ..
+
+
+
+
+Touch
+Crea un archivo vacío, si el archivo existe actualiza la hora de modificación. Para crear el archivo prueba1.txt en /home, seria:
+
+$ touch /home/prueba1.txt
+
+
+
+
+Mkdir
+Viene de "make directory" o "crear directorio", crea un directorio nuevo tomando en cuenta la ubicación actual. Por ejemplo, si estas en /home y deseas crear el directorio ejercicios, sería:
+
+$ mkdir /home/ejercicios
+
+Mkdir tiene una opción bastante útil que permite crear varios directorios, o mejor aun, un "arbol" de directorios. Para eso usamos la opción -p:
+
+$ mkdir -p /home/ejercicios/prueba/uno/dos/tres
+
+
+
+
+Cp
+Viene de "copy" o "copiar", copia un archivo o directorio origen a un archivo o directorio destino. Por ejemplo, para copiar el archivo prueba.txt ubicado en /home a un directorio de respaldo, podemos usar:
+
+$ cp /home/prueba.txt /home/respaldo/prueba.txt
+
+En la sintaxis siempre se especifica primero el origen y luego el destino. Si indicamos un nombre de destino diferente, cp copiará el archivo o directorio con el nuevo nombre.
+
+El comando también cuenta con la opción -r que copia no sólo el directorio especificado sino todos sus directorios internos de forma recursiva. Suponiendo que deseamos hacer una copia del directorio /home/ejercicios que a su vez tiene las carpetas ejercicio1 y ejercicio2 en su interior, en lugar de ejecutar un comando para cada carpeta, ejecutamos:
+
+$ cp -r /home/ejercicios /home/respaldos/
+
+
+
+
+Mv
+Viene de "move" o "mover", mueve un archivo a una ruta específica, y a diferencia de cp, lo elimina del origen finalizada la operación. Por ejemplo:
+
+$ mv /home/prueba.txt /home/respaldos/prueba2.txt
+
+Al igual que cp, en la sintaxis se especifica primero el origen y luego el destino. Si indicamos un nombre de destino diferente, mv moverá el archivo o directorio con el nuevo nombre.
+
+
+
+
+Rm
+Viene de "remove" o "remover", es el comando necesario para borrar un archivo o directorio. Para borrar el archivo prueba.txt ubicado en /home, ejecutamos:
+
+$ rm /home/prueba.txt
+
+Este comando también presenta varias opciones. La opción -r borra todos los archivos y directorios de forma recursiva. Por otra parte, -f borra todo sin pedir confirmación. Estas opciones pueden combinarse causando un borrado recursivo y sin confirmación del directorio que se especifique. Para realizar esto en el directorio respaldos ubicado en el /home, usamos:
+
+$ rm -fr /home/respaldos
+
+RECORDATORIO/PRECAUCION: Este comando es muy peligroso, por lo tanto es importante que nos documentemos bien acerca de los efectos de estas opciones en nuestro sistema para así evitar consecuencias nefastas.
+
+
+
+
+*
+Nos permite buscar en base al termino o inicio de un archivo con una letra o numero dependiendo de donde situas el asterisco. Ejemplo:
+
+$ *a   ~Para los archivos que terminen en "a"
+$ a*   ~Para los archivos que empiezen en "a"
+
+
+
+
+Clear
+Viene de "limpiar", y es un sencillo comando que limpiara nuestra terminal por completo dejándola como recién abierta. Para ello ejecutamos:
+
+$ clear
+
+Como bonus les recomiendo utilizar man que muestra una documentación completa de todos los comandos. Para clear, por ejemplo:
+
+$ man clear
+
+
+
+Echo
+Sirve para repetir las palabras, o bien, para repetir tu texto en un archivo de texto. Ejemplo:
+
+$ echo hola
+
+= hola
+
+$ echo hola > hola.txt    ~Crea un archivo de texto en el que contiene la palabra "hola"
+
+$ echo buenos días >> hola.txt   ~Escribe "buenos días" un renglón debajo de "hola"
+
+
+
+
+Pwd
+Te muestra en qué directorio te encuentras, es decir, en qué directorio estás realizando las acciónes y comandos. Ejemplo:
+
+$ pwd
+
+= /home/usuario
+
+
+
+

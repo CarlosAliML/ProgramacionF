@@ -7,7 +7,7 @@ A continucación le mostraremos una lista de comandos y su función.
 Man
 Este es un comando demasiado útil cuando estas aprendiendo lo básico para linux, "man" te muestra un "manual" y la función del comando que escribas después de este. Ejemplo:
 
-$ Man ls    ~Te describe para qué sirve el comando ls.
+$ Man ls    ~Te describe para qué sirve el comando ls. hola
 
 
 

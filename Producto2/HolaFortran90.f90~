@@ -1,0 +1,13 @@
+/! Hello World in Fortran 90 and 95
+
+PROGRAM HelloWorld
+     WRITE(*,*)  "Hello World!"
+END PROGRAM/ Hello World in C++ (pre-ISO)
+
+#include <iostream.h>
+
+main()
+{
+    cout << "Hello World!" << endl;
+    return 0;
+}

@@ -1,0 +1,124 @@
+% Ejemplo de documento LaTeX
+% Tipo de documento y tamaño de letra
+\documentclass[12pt]{article}
+
+
+
+
+
+
+
+
+
+
+\usepackage[spanish]{babel}
+\usepackage{longtable} 
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+
+
+
+
+
+
+
+% EL titulo, autor y fecha del documento
+\title{Guía de comandos para Bash}
+\author{Carlos Medina}
+\date{9-2-15}
+
+
+
+
+
+
+
+
+% Aqui comienza el cuerpo del documento
+\begin{document}
+% Construye el título
+\maketitle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+El siguiente texto es una pequeña guia para la terminal de Linux, así como algunos comandos básicos para usarlo y entender mejor la utilidad de este sistema operativo.
+
+
+
+
+
+
+
+
+A continucación le mostraremos una lista de comandos y su función.
+
+
+
+
+
+
+
+
+
+
+\begin{tabular}{|c|p{3cm}|p{10cm}|p{3cm}|}
+    \cline{1-3}
+    \multicolumn{3}{|c|}{Comandos Linux}\\
+    \cline{1-3}
+    Comando & Ejemplo & Descripción de comando\\
+    \cline{1-3}
+    \centering
+    man & $man ls$ & Te describe para qué sirve el comando ls. te muestra un manual y la función del comando que escribas después de éste.\\
+    \hline
+    cat & $cat prueba.txt$ &Nos permite visualizar el contenido de un archivo de texto sin la necesidad de un editor, debemos mencionarlo junto al archivo que deseamos visualizar.\\
+    \hline
+    ls & $ls -al$ &Permite listar el contenido de un directorio o fichero. Puedes usar -a para mostrar los archivos ocultos y -l para mostrar los usuarios, permisos y la fecha de los archivos. \\
+    \hline
+    cd & cd "/"home"/"ejercicios & Viene de "cambiar directorio" Te permite acceder a una ruta distinta de la que te encuentras. En el ejemplo pueden ver si estas en el directorio /home y deseas acceder a /home/ejercicios\\
+    \hline 
+    touch & touch /home/prueba1.txt & Crea un archivo vacío, si el archivo existe actualiza la hora de modificación. Para crear el archivo prueba1.txt en /home\\
+    \hline 
+    Mkdir & mkdir /home/ejercicios & Viene de "make directory" o "crear directorio", crea un directorio nuevo tomando en cuenta la ubicación actual. Por ejemplo, si estas en /home y deseas crear el directorio ejercicios\\
+    \hline 
+  \end{tabular}
+  
+\begin{tabular}{|c|p{3cm}|p{10cm}|p{3cm}|}
+    \cline{1-3}
+    \cline{1-3}
+    Comando & Ejemplo & Descripción de comando\\
+    \cline{1-3}
+    \centering
+     \hline 
+    cp & cp /home/prueba.txt /home/respaldo/prueba.txt & Viene de "copy" o "copiar", copia un archivo o directorio origen a un archivo o directorio destino. Por ejemplo, para copiar el archivo prueba.txt ubicado en /home a un directorio de respaldo\\
+    \hline 
+    mv & mv /home/prueba.txt /home/respaldos/prueba2.txt & Viene de "move" o "mover", mueve un archivo a una ruta específica, y a diferencia de cp, lo elimina del origen finalizada la operación.\\
+    \hline 
+    rm & rm /home/prueba.txt & Viene de "remove" o "remover", es el comando necesario para borrar un archivo o directorio. Para borrar el archivo prueba.txt ubicado en $/home$\\
+    \hline 
+    -fr & rm -fr /home/respaldos & La opción -r borra todos los archivos y directorios de forma recursiva. Por otra parte, -f borra todo sin pedir confirmación. Estas opciones se usan en el comando rm y pueden combinarse causando un borrado recursivo y sin confirmación del directorio que se especifique. Para realizar esto en el directorio respaldos ubicado en el /home\\
+    \hline 
+    * & $*a$   ~Para los archivos que terminen en "a" y $a*$   ~Para los archivos que empiezen en "a" & Nos permite buscar en base al termino o inicio de un archivo con una letra o numero dependiendo de donde situas el asterisco.\\
+    \hline 
+    clear & clear & Viene de "limpiar", y es un sencillo comando que limpiara nuestra terminal por completo dejándola como recién abierta.\\
+    \hline 
+    echo & echo hola & Sirve para repetir las palabras, o bien, para repetir tu texto en un archivo de texto.\\
+    \hline 
+    pwd& pwd& Te muestra en qué directorio te encuentras, es decir, en qué directorio estás realizando las acciónes y comandos.\\
+    \hline 
+  \end{tabular}
+  
+  

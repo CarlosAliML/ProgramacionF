@@ -1,0 +1,5 @@
+program hello
+    write(*,*) 'Hello, world!'
+call sleep(10)
+write(*,*) 'Hello, world!'
+end program hello

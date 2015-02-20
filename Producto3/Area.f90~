@@ -1,0 +1,15 @@
+program circle_area
+  implicit none
+  real *8 :: radius, circum, area
+  real *8 :: PI = 4.0 * atan(1.0)
+  integer :: model n = 1s
+  print *, ’enter a radius:’
+  read (*,*) radius s
+  circum = 2.0 * PI * radius
+  area = radius * radius * PI 
+  print *, ’program number =’ , model n
+  print *, ’radius =’ , radius
+  print *, ’circumference =’ , circum
+  print *, ’area =’ , area
+end program circle_area 
+ 

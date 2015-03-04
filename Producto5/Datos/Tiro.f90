@@ -11,20 +11,21 @@
        read *, v   
        r = a*pi/180.0
      
-       vx = (v)*cos(r)
-       vy = (v)*sin(r)
+       vx = (v)*(cos(r))
+       vy = (v)*(sin(r))
 
        open(1, file='Tiro.dat')
        y = 0
        x = 0
        
-       do i=1,3000, 1   
+       do i=1,3000  
             t = (float(i)*0.01)   
             x(i) = vx*t   
-            y(i) = vy*t -(4.9*t*t)
+            y(i) = vy*t -4.9*t*t
      
             write(1,*) x(i), y(i)      
-            if (y(i)<0) exit   
+            if (y(i)<0) exit 
+         
        end do
 
        close(1)   

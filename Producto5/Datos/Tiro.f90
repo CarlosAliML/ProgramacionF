@@ -18,7 +18,7 @@
        y = 0
        x = 0
        
-       do i=1,3000  
+       do i=1,3000, 1  
             t = (float(i)*0.01)   
             x(i) = vx*t   
             y(i) = vy*t -4.9*t*t

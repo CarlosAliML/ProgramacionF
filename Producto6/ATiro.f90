@@ -5,8 +5,8 @@ real, parameter :: pi = 4.0*atan(1.0)
 integer, parameter :: npts = 6500
 
 real, parameter :: aire = 1.29
-real, parameter :: esfera = 1.47
-real, parameter :: medesfera = 1.42
+real, parameter :: esfera = 0.47
+real, parameter :: medesfera = 0.42
 real, parameter :: cono = 0.5
 real, parameter :: cubo = 1.05
 real, parameter :: cuboa = 0.8
@@ -16,14 +16,14 @@ end module constantes
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Subroutine confriccion (xini,yini,vini,angini,xmax,ymax,t)
+Subroutine confriccion (xini,yini,vini,angini,xmaxf,tf,ymaxf)
 use constantes
 implicit none
 integer :: i
 character :: object
-real, dimension (0:npts) :: z,w,t,vz,vw,az,aw
+real, dimension (0:npts) :: z,w,u,vz,vw,az,aw
 real :: xini, yini, vini,angini
-real :: xmax, ymax, tmax
+real :: xmaxf, ymaxf, tf
 real :: ad,area,radio,cd,masa
 
 Print *, "Ingresa la masa del cuerpo (kg) (reales)"
@@ -78,7 +78,6 @@ Select case (object)
       Print *, "Error, comando no definido"
 end select
 
-
 z(0) = xini
 w(0) = yini
 vz(0) = vini*COS(angini)
@@ -86,46 +85,46 @@ vw(0) = vini*SIN(angini)
 ad = (0.5*aire*area*cd)/masa
 az(0) = -ad*vz(0)*vz(0)
 aw(0) = 9.8-(ad*vw(0)*vw(0))
-t(0) = 0
+u(0) = 0
 
 OPEN (2, FILE="confriccion.dat")
 WRITE (2,1001) z(0),w(0)
 1001 FORMAT (f11.5,f11.5)
 
 DO i=0, npts, 1
-  t(i+1) = t(i) + 0.01
-  vz(i+1) = vz(i)+az(i)*t(i+1)
-  vw(i+1) = vw(i)+aw(i)*t(i+1)
+  u(i+1) = u(i) + 0.01
+  vz(i+1) = vz(i)+az(i)*u(i+1)
+  vw(i+1) = vw(i)+aw(i)*u(i+1)
   az(i+1) = -ad*vz(i)*vz(i)
   aw(i+1) = -9.8-(ad*vz(i)*vz(i))
-  z(i+1) = z(i)+vz(i)*t(i+1)+(0.5*az(i)*t(i+1)*t(i+1))
-  w(i+1) = w(i)+vw(i)*t(i+1)+(0.5*aw(i)*t(i+1)*t(i+1))
+  z(i+1) = z(i)+vz(i)*u(i+1)+(0.5*az(i)*u(i+1)*u(i+1))
+  w(i+1) = w(i)+vw(i)*u(i+1)+(0.5*aw(i)*u(i+1)*u(i+1))
   WRITE (2,*) z(i+1), w(i+1)
   IF (w(i)<0) EXIT
 END DO
 CLOSE (2)
 
-xmax = MAXVAL(z)
-ymax = MAXVAL(w)
-t = MAXVAL(t)
+xmaxf = z(i)
+ymaxf = MAXVAL(w)
+tf = u(i)*10.0
 
 END SUBROUTINE confriccion
 
 !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Subroutine sinfriccion (xini,yini,vini,angini,xmaxs,ymaxs,ts)!use "s" para simbolizar "sin friccion"
+Subroutine sinfriccion (xini,yini,vini,angini,xmaxsf,ymaxsf,tsf)!use "sf" para simbolizar "sin friccion"
 use constantes
 implicit none
 INTEGER :: i
 Real, dimension (1:npts) :: x,y,t
 REAL :: xini, yini, vini, angini   
-REAL :: xmaxs, ymaxs, ts    
+REAL :: xmaxsf, ymaxsf, tsf    
 
 angini=angini*dgt
 
-xmaxs = xini+((vini*vini+SIN(2*angini))/(9.8))
-ymaxs = yini+(((vini*vini)*(SIN(angini)*SIN(angini)))/(19.6))
-ts = (2*vini*SIN(angini))/(9.8)
+xmaxsf = xini+((vini*vini+SIN(2*angini))/(9.8))
+ymaxsf = yini+(((vini*vini)*(SIN(angini)*SIN(angini)))/(19.6))
+tsf = (2*vini*SIN(angini))/(9.8)
 
 open (1, file="sinfriccion.dat")
 
@@ -146,16 +145,16 @@ END SUBROUTINE sinfriccion
 program projectilfriccion
 use constantes  
        implicit none  
-       real :: xini,yini,vini,angini 
-       real :: xmaxs,ymaxs,ts,xmax,t,ymax
+       real :: xini,yini,vini,angini
+       real :: xmaxsf,ymaxsf,tsf,xmaxf,ymaxf,tf
        real :: diferencia 
        
        write(*,*) 'Ingresa la "x" inicial, la "y" inicial, la velocidad inicial, y el angulo inicial, respectivamente'   
        read *, xini, yini, vini, angini
    
-       call sinfriccion (xini,yini,vini,angini,xmaxs,ymaxs,ts)
-       call confriccion (xini,yini,vini,angini,xmax,t,ymax)
-       diferencia = ((xmaxs-xmax)/xmax) * 100.0
+       call sinfriccion (xini,yini,vini,angini,xmaxsf,ymaxsf,tsf)
+       call confriccion  (xini,yini,vini,angini,xmaxf,ymaxf,tf)
+       diferencia = ((xmaxsf-xmaxf)/xmaxf) * 100.0
 
 
 write(*,*) '°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°'
@@ -166,16 +165,16 @@ write(*,*) '.'
 write(*,*) '.'
 write(*,*) '.'
        write(*,*) 'Sin friccion'
-       write(*,*) 'La altura maxima (y) es de: ', ymaxs,'m'
-       write(*,*) 'El tiempo total en el aire fue de:', ts,'s'
-       write(*,*) 'El alcance maximo (x) fue de:', xmaxs,'m'
+       write(*,*) 'La altura maxima (y) es de: ', ymaxsf,'m'
+       write(*,*) 'El tiempo total en el aire fue de:', tsf,'s'
+       write(*,*) 'El alcance maximo (x) fue de:', xmaxsf,'m'
 write(*,*) '.'
 write(*,*) '.'
 write(*,*) '.'
        write(*,*) 'Con friccion'
-       write(*,*) 'La altura maxima (y) es de: ', ymax,'m'
-       write(*,*) 'El tiempo total en el aire fue de:', t,'s'
-       write(*,*) 'El alcance maximo (x) fue de:', xmax,'m'
+       write(*,*) 'La altura maxima (y) es de: ', ymaxf,'m'
+       write(*,*) 'El tiempo total en el aire fue de:', tf,'s'
+       write(*,*) 'El alcance maximo (x) fue de:', xmaxf,'m'
 write(*,*) '.'
 write(*,*) '.'
 write(*,*) '.'

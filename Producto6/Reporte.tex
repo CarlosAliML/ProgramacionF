@@ -1,3 +1,74 @@
+% Ejemplo de documento LaTeX
+% Tipo de documento y tamaño de letra
+\documentclass[12pt]{article}
+
+
+\usepackage[spanish]{babel}
+\usepackage{longtable} 
+\selectlanguage{spanish}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+
+
+
+
+% EL titulo, autor y fecha del documento
+\title{Reporte de Actividad 6}
+\author{Carlos Medina}
+\date{10-04-15}
+
+
+% Aqui comienza el cuerpo del documento
+\begin{document}
+% Construye el título
+\maketitle
+
+
+El siguiente reporte describirá los pasos realizados para la actividad 6 (2015-1), se explicarán y se mostrarán los resultados de ésta.
+
+
+
+
+\hspace {0.5cm} En este reporte estudiaremos el tiro parabólico con fuerza de arrastre. El tiro parabólico normal y el tiro parabólico con fuerza de arrastre son tiros similares al inicio, sólo que modificándose su trayectoria debido al arrastre que actúa en éste.
+
+Todo objeto de masa m que se mueve a muy alta velocidad en un fluido de densidad P,  experimenta una fuerza de arrastre FD  contraria a la dirección de su movimiento y es  dada por la ecuación
+ 
+\begin{center}
+	\includegraphics[width=3cm]{Ec1.png}\\
+\end{center}
+ 
+donde u es la magnitud del vector velocidad del objeto, CD es  el coeficiente de arraste (adimensional), A es el área transversal presentada por el objeto (sección eficaz). Por ejemplo, para una esfera el área transversal es A=pi*r , y  el coeficiente de arrastre es CD = 0.47.
+ 
+Se pide agregar el efecto de resistencia del aire al objeto lanzado en tiro parabólico. El objeto ahora experimenta una fuerza de arrastre en la dirección del movimiento FD = FDx + FDy  o bien produciendo una aceleración variable aD = aDx + aDy = FD/m.
+ 
+Modifica tu código Fortran para ahora incluir los efectos de fricción de arrastre por el aire. 
+
+\begin{center}
+	\includegraphics[width=10cm]{Im1.png}\\
+\end{center}
+ 
+
+\vspace{0.5cm}
+La estructura del código debe contemplar lo siguiente:
+ 
+1.Sección de declaración de variables
+
+2.Sección de declaración de constantes
+
+3.Subrutina para cálculo de trayectoria con entradas: dt, x0, y0, v0x, v0y, ax, ay; salida: t, x, y 
+
+4.Subrutina para cálculo de fuerza de arrastre con entrada: m, densidad, A, CD, u0x, v0y ; salida: ax, ay
+
+5.Se pide que utilizar un formato para escribir salida para los datos (ver ejemplo de formato):
+              do i = 1, npts       
+              write(1, 10001) x(i), y(i)
+       end do 
+  1001 format (2f10.6)
+ 
+
+\vspace{0.5cm}
+El código que usaremos será el siguiente:
+\begin{verbatim}
 Module constantes
 implicit none
 real, parameter :: dgt = (4.0*atan(1.0))/180
@@ -100,7 +171,7 @@ DO i=0, npts, 1
   z(i+1) = z(i)+vz(i)*u(i+1)+(0.5*az(i)*u(i+1)*u(i+1))
   w(i+1) = w(i)+vw(i)*u(i+1)+(0.5*aw(i)*u(i+1)*u(i+1))
   WRITE (2,*) z(i+1), w(i+1)
-  IF (w(i+1)<0) EXIT
+  IF (w(i)<0) EXIT
 END DO
 CLOSE (2)
 
@@ -181,3 +252,18 @@ write(*,*) '.'
        write(*,*) 'La altura maxima (y) es de: La diferencia entre considerar y no considerar la friccion es de', diferencia,'%'
 write(*,*) '°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°~~~~~°'
   end program projectilfriccion 
+
+\end{verbatim}
+
+Ahora, verémos los resultados.
+
+Primero se realizará una prueba lanzando una esfera de masa de 0.25kg, y radio de 0.05m, con un ángulo de 60° y desde el piso (0,0).
+Los resultados que arroja el programa son los que aparecen en la siguiente imagen:
+
+{
+ \hspace{20cm}
+\begin{center}
+\includegraphics[width=17cm]{resul60.png}\\
+\end{center}
+}
+\end{document}

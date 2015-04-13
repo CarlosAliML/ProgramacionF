@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.15)  13 APR 2015 11:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.15)  13 APR 2015 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -286,33 +286,65 @@ $~~~~~$[]$~~~~~~$[]$~~~~~$[]$~~~~~$[]$~~~~~$[]$~~~~~$[]$~~~~~$[]$'[]
 File: resul60.png Graphic file (type png)
  <use resul60.png>
 Package pdftex.def Info: resul60.png used on input line 265.
-(pdftex.def)             Requested size: 483.69684pt x 300.61693pt.
+(pdftex.def)             Requested size: 426.79134pt x 265.25505pt.
 
-Overfull \hbox (93.69684pt too wide) in paragraph at lines 265--265
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 265--265
  [] 
  []
 
-[7] <graf.png, id=35, 642.4pt x 385.44pt>
-File: graf.png Graphic file (type png)
- <use graf.png>
-Package pdftex.def Info: graf.png used on input line 271.
-(pdftex.def)             Requested size: 483.69684pt x 290.22615pt.
+[7] <graf60.png, id=35, 642.4pt x 385.44pt>
+File: graf60.png Graphic file (type png)
+ <use graf60.png>
+Package pdftex.def Info: graf60.png used on input line 271.
+(pdftex.def)             Requested size: 426.79134pt x 256.07912pt.
 
-Overfull \hbox (93.69684pt too wide) in paragraph at lines 271--271
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 271--271
  [] 
  []
 
-[8 <./resul60.png>] [9 <./graf.png>] (./Reporte.aux
+[8 <./resul60.png>] <resul30.png, id=41, 616.55344pt x 383.18156pt>
+File: resul30.png Graphic file (type png)
+
+<use resul30.png>
+Package pdftex.def Info: resul30.png used on input line 278.
+(pdftex.def)             Requested size: 426.79134pt x 265.25505pt.
+
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 278--278
+ [] 
+ []
+
+[9 <./graf60.png>] <graf30.png, id=46, 642.4pt x 385.44pt>
+File: graf30.png Graphic file (type png)
+ <use graf30.png>
+Package pdftex.def Info: graf30.png used on input line 283.
+(pdftex.def)             Requested size: 426.79134pt x 256.07912pt.
+
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 283--283
+ [] 
+ []
+
+[10 <./resul30.png> <./graf30.png (PNG copy)>]
+<grafambos.png, id=51, 642.4pt x 385.44pt>
+File: grafambos.png Graphic file (type png)
+ <use grafambos.png>
+Package pdftex.def Info: grafambos.png used on input line 292.
+(pdftex.def)             Requested size: 426.79134pt x 256.07912pt.
+
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 292--292
+ [] 
+ []
+
+[11 <./grafambos.png (PNG copy)>] (./Reporte.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 LaTeX Info: Redefining \. on input line 10.
 LaTeX Info: Redefining \% on input line 10.
 ) ) 
 Here is how much of TeX's memory you used:
- 3068 strings out of 494925
- 41548 string characters out of 6178544
+ 3084 strings out of 494925
+ 41794 string characters out of 6178544
  108806 words of memory out of 5000000
- 6264 multiletter control sequences out of 15000+600000
+ 6277 multiletter control sequences out of 15000+600000
  7757 words of font info for 28 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  37i,6n,26p,348b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -321,10 +353,10 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Reporte.pdf (9 pages, 130440 bytes).
+Output written on Reporte.pdf (11 pages, 220536 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 73 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
